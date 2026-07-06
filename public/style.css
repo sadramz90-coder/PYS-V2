@@ -1,13 +1,9 @@
-/* ===== تنظیمات پایه ===== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Vazirmatn:wght@300;400;700;900&display=swap');
 
 :root {
     --gold-primary: #d4af37;
     --gold-secondary: #ffd700;
-    --gold-glow: rgba(212, 175, 55, 0.3);
     --dark-bg: #0a0a0a;
-    --dark-card: rgba(15, 15, 15, 0.95);
-    --neon-gold: 0 0 30px rgba(212, 175, 55, 0.2);
     --cyber-font: 'Orbitron', sans-serif;
     --persian-font: 'Vazirmatn', sans-serif;
 }
@@ -26,7 +22,6 @@ body {
     color: #fff;
 }
 
-/* ===== پس‌زمینه ذرات ===== */
 #particlesCanvas {
     position: fixed;
     top: 0;
@@ -69,7 +64,6 @@ body {
 .cyber-logo {
     text-align: center;
     margin-bottom: 30px;
-    position: relative;
 }
 
 .logo-icon {
@@ -91,7 +85,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 8px;
-    text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
     display: block;
 }
 
@@ -104,7 +97,6 @@ body {
     margin-top: -5px;
 }
 
-/* ===== تب‌ها ===== */
 .auth-tabs {
     display: flex;
     gap: 10px;
@@ -135,15 +127,6 @@ body {
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
-.auth-tab:hover {
-    color: #d4af37;
-}
-
-.auth-tab.active:hover {
-    color: #0a0a0a;
-}
-
-/* ===== فرم‌ها ===== */
 .auth-form {
     display: none;
     animation: slideUp 0.5s ease;
@@ -158,7 +141,6 @@ body {
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== ورودی‌ها ===== */
 .cyber-input {
     position: relative;
     margin-bottom: 20px;
@@ -192,7 +174,6 @@ body {
     opacity: 0.5;
 }
 
-/* ===== دکمه‌ها ===== */
 .cyber-btn {
     width: 100%;
     padding: 16px;
@@ -217,7 +198,6 @@ body {
     box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
 }
 
-/* ===== فوتر ===== */
 .auth-footer {
     text-align: center;
     margin-top: 25px;
@@ -241,7 +221,6 @@ body {
     z-index: 1;
 }
 
-/* ===== سایدبار ===== */
 .sidebar {
     width: 320px;
     background: rgba(10, 10, 10, 0.95);
@@ -326,7 +305,6 @@ body {
     color: #d4af37;
 }
 
-/* ===== جستجو ===== */
 .search-box {
     padding: 15px 20px;
 }
@@ -349,7 +327,6 @@ body {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
 }
 
-/* ===== تب‌های چت ===== */
 .chat-tabs {
     display: flex;
     gap: 5px;
@@ -376,11 +353,6 @@ body {
     color: #d4af37;
 }
 
-.chat-tab:hover {
-    color: #d4af37;
-}
-
-/* ===== لیست چت ===== */
 .chat-list {
     flex: 1;
     overflow-y: auto;
@@ -452,13 +424,6 @@ body {
     text-overflow: ellipsis;
 }
 
-.chat-item .time {
-    font-size: 10px;
-    color: #444;
-    flex-shrink: 0;
-}
-
-/* ===== فوتر سایدبار ===== */
 .sidebar-footer {
     padding: 15px 20px;
     border-top: 1px solid rgba(212, 175, 55, 0.05);
@@ -535,7 +500,6 @@ body {
     color: #888;
 }
 
-/* ===== پیام‌ها ===== */
 .messages-container {
     flex: 1;
     overflow-y: auto;
@@ -641,17 +605,6 @@ body {
     background: rgba(212, 175, 55, 0.1);
 }
 
-.message .reply-to {
-    font-size: 11px;
-    color: #888;
-    padding: 4px 10px;
-    background: rgba(212, 175, 55, 0.05);
-    border-radius: 10px;
-    margin-bottom: 6px;
-    border-right: 2px solid #d4af37;
-}
-
-/* ===== تایپ ایندیکیتور ===== */
 .typing-indicator {
     padding: 5px 25px;
     color: #888;
@@ -666,7 +619,6 @@ body {
     color: #d4af37;
 }
 
-/* ===== فوتر چت ===== */
 .chat-footer {
     padding: 15px 25px 25px;
     background: rgba(10, 10, 10, 0.95);
@@ -794,7 +746,6 @@ body {
     transform: rotate(90deg);
 }
 
-/* ===== تنظیمات ===== */
 .settings-group {
     margin-bottom: 20px;
 }
@@ -832,7 +783,6 @@ body {
     min-height: 80px;
 }
 
-/* ===== وضعیت ===== */
 .status-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -856,7 +806,6 @@ body {
     border-color: #d4af37;
 }
 
-/* ===== مدیریت ===== */
 .admin-section {
     margin-bottom: 25px;
 }
@@ -899,7 +848,6 @@ body {
     background: rgba(212, 175, 55, 0.1);
 }
 
-/* ===== ریسپانسیو ===== */
 @media (max-width: 768px) {
     .auth-container {
         padding: 30px 20px;
