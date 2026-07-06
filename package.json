@@ -1,0 +1,16 @@
+{
+  "name": "pys-v2-chat",
+  "version": "2.0.0",
+  "description": "PYS 2.0 - Golden Cyber Chat Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

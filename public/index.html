@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYS 2.0 · سلطان پیام‌رسان</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- پس‌زمینه ذرات طلایی -->
+    <canvas id="particlesCanvas"></canvas>
+
+    <!-- صفحه ورود -->
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-container">
+            <!-- لوگو گنگ -->
+            <div class="cyber-logo">
+                <span class="logo-icon">⚜️</span>
+                <span class="logo-text">PYS</span>
+                <span class="logo-version">2.0</span>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">✦ ورود</button>
+                <button class="auth-tab" data-tab="register">✦ ثبت‌نام</button>
+            </div>
+
+            <!-- فرم ورود -->
+            <div id="login-form" class="auth-form active">
+                <div class="input-group cyber-input">
+                    <input type="text" id="login-username" placeholder="نام کاربری" autocomplete="off">
+                    <span class="input-icon">👤</span>
+                </div>
+                <div class="input-group cyber-input">
+                    <input type="password" id="login-password" placeholder="رمز عبور">
+                    <span class="input-icon">🔑</span>
+                </div>
+                <button id="login-btn" class="cyber-btn gold">🚀 ورود به قلمرو</button>
+            </div>
+
+            <!-- فرم ثبت‌نام -->
+            <div id="register-form" class="auth-form">
+                <div class="input-group cyber-input">
+                    <input type="text" id="reg-username" placeholder="نام کاربری" autocomplete="off">
+                    <span class="input-icon">👤</span>
+                </div>
+                <div class="input-group cyber-input">
+                    <input type="password" id="reg-password" placeholder="رمز عبور (حداقل ۶ کاراکتر)">
+                    <span class="input-icon">🔑</span>
+                </div>
+                <div class="input-group cyber-input">
+                    <input type="text" id="reg-emoji" placeholder="شکلک پروفایل (مثل: 😎)" maxlength="2">
+                    <span class="input-icon">😊</span>
+                </div>
+                <button id="register-btn" class="cyber-btn gold">🌟 ثبت‌نام سلطنتی</button>
+            </div>
+
+            <div class="auth-footer">
+                <span>طراحی توسط</span>
+                <span class="sadra-sign">S A D R A</span>
+                <span>⚡</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحه اصلی چت -->
+    <div id="main-app" style="display:none;">
+        <!-- سایدبار -->
+        <div class="sidebar">
+            <!-- هدر سایدبار -->
+            <div class="sidebar-header">
+                <div class="user-card" id="user-card">
+                    <div class="user-avatar" id="user-avatar">😎</div>
+                    <div class="user-info">
+                        <div class="user-name" id="user-name">کاربر</div>
+                        <div class="user-status" id="user-status">🟢 آنلاین</div>
+                    </div>
+                </div>
+                <div class="sidebar-actions">
+                    <button id="status-btn" class="icon-btn" title="تغییر وضعیت">⚡</button>
+                    <button id="settings-btn" class="icon-btn" title="تنظیمات">⚙️</button>
+                </div>
+            </div>
+
+            <!-- جستجو -->
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="🔍 جستجوی کاربران...">
+            </div>
+
+            <!-- تب‌ها -->
+            <div class="chat-tabs">
+                <button class="chat-tab active" data-tab="personal">💬 شخصی</button>
+                <button class="chat-tab" data-tab="groups">👥 گروه‌ها</button>
+                <button class="chat-tab" data-tab="channels">📢 کانال‌ها</button>
+            </div>
+
+            <!-- لیست چت‌ها -->
+            <div class="chat-list" id="chat-list">
+                <!-- داینامیک پر میشه -->
+            </div>
+
+            <!-- فوتر سایدبار -->
+            <div class="sidebar-footer">
+                <div class="online-counter" id="online-counter">🟢 ۰ آنلاین</div>
+                <button id="logout-btn" class="logout-btn">🚪 خروج</button>
+            </div>
+        </div>
+
+        <!-- بخش اصلی چت -->
+        <div class="main-chat">
+            <!-- هدر چت -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <span class="chat-header-avatar" id="chat-header-avatar">💬</span>
+                    <div>
+                        <div class="chat-header-name" id="chat-header-name">انتخاب کنید</div>
+                        <div class="chat-header-status" id="chat-header-status">🔹</div>
+                    </div>
+                </div>
+                <div class="chat-header-actions">
+                    <button class="icon-btn" id="clear-chat-btn">🗑️</button>
+                </div>
+            </div>
+
+            <!-- محتوای پیام‌ها -->
+            <div class="messages-container" id="messages-container">
+                <!-- پیام‌ها اینجا -->
+            </div>
+
+            <!-- بخش تایپ -->
+            <div class="typing-indicator" id="typing-indicator">⚜️ کسی در حال نوشتن است...</div>
+
+            <!-- فوتر چت -->
+            <div class="chat-footer">
+                <div class="chat-input-wrapper">
+                    <button class="emoji-btn" id="emoji-btn">😊</button>
+                    <input type="text" id="message-input" placeholder="پیام طلایی خود را بنویس..." autocomplete="off">
+                    <button class="send-btn" id="send-btn">➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال تنظیمات -->
+    <div id="settings-modal" class="modal" style="display:none;">
+        <div class="modal-content cyber-modal">
+            <div class="modal-header">
+                <h2>⚙️ تنظیمات پروفایل</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <label>شکلک پروفایل</label>
+                    <input type="text" id="settings-emoji" maxlength="2">
+                </div>
+                <div class="settings-group">
+                    <label>نام کاربری</label>
+                    <input type="text" id="settings-username">
+                </div>
+                <div class="settings-group">
+                    <label>بیوگرافی</label>
+                    <textarea id="settings-bio" placeholder="بیوگرافی خود را بنویس..."></textarea>
+                </div>
+                <button id="save-settings" class="cyber-btn gold">💾 ذخیره تغییرات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال وضعیت -->
+    <div id="status-modal" class="modal" style="display:none;">
+        <div class="modal-content cyber-modal">
+            <div class="modal-header">
+                <h2>⚡ تغییر وضعیت</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body status-options">
+                <button class="status-option" data-status="online">🟢 آنلاین</button>
+                <button class="status-option" data-status="offline">⚫ آفلاین</button>
+                <button class="status-option" data-status="busy">🔴 مشغول</button>
+                <button class="status-option" data-status="sad">😔 ناراحت</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال مدیریت (فقط مالک) -->
+    <div id="admin-modal" class="modal" style="display:none;">
+        <div class="modal-content cyber-modal admin-modal">
+            <div class="modal-header">
+                <h2>👑 پنل مدیریت سلطنتی</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body admin-body">
+                <div class="admin-section">
+                    <h3>👥 مدیریت کاربران</h3>
+                    <div id="admin-users-list"></div>
+                </div>
+                <div class="admin-section">
+                    <h3>👥 مدیریت گروه‌ها</h3>
+                    <div id="admin-groups-list"></div>
+                </div>
+                <div class="admin-section">
+                    <h3>📢 مدیریت کانال‌ها</h3>
+                    <div id="admin-channels-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
