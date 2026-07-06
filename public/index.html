@@ -8,26 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- پس‌زمینه ذرات طلایی -->
     <canvas id="particlesCanvas"></canvas>
 
     <!-- صفحه ورود -->
     <div id="auth-screen" class="auth-screen">
         <div class="auth-container">
-            <!-- لوگو -->
             <div class="cyber-logo">
                 <span class="logo-icon">⚜️</span>
                 <span class="logo-text">PYS</span>
                 <span class="logo-version">2.0</span>
             </div>
             
-            <!-- تب‌ها -->
             <div class="auth-tabs">
                 <button class="auth-tab active" data-tab="login">✦ ورود</button>
                 <button class="auth-tab" data-tab="register">✦ ثبت‌نام</button>
             </div>
 
-            <!-- فرم ورود -->
             <div id="login-form" class="auth-form active">
                 <div class="input-group cyber-input">
                     <input type="text" id="login-username" placeholder="نام کاربری" autocomplete="off">
@@ -40,7 +36,6 @@
                 <button id="login-btn" class="cyber-btn gold">🚀 ورود به قلمرو</button>
             </div>
 
-            <!-- فرم ثبت‌نام -->
             <div id="register-form" class="auth-form">
                 <div class="input-group cyber-input">
                     <input type="text" id="reg-username" placeholder="نام کاربری" autocomplete="off">
@@ -67,7 +62,6 @@
 
     <!-- صفحه اصلی چت -->
     <div id="main-app" style="display:none;">
-        <!-- سایدبار -->
         <div class="sidebar">
             <div class="sidebar-header">
                 <div class="user-card" id="user-card">
@@ -93,9 +87,7 @@
                 <button class="chat-tab" data-tab="channels">📢 کانال‌ها</button>
             </div>
 
-            <div class="chat-list" id="chat-list">
-                <!-- لیست چت‌ها -->
-            </div>
+            <div class="chat-list" id="chat-list"></div>
 
             <div class="sidebar-footer">
                 <div class="online-counter" id="online-counter">🟢 ۰ آنلاین</div>
@@ -103,7 +95,6 @@
             </div>
         </div>
 
-        <!-- بخش اصلی چت -->
         <div class="main-chat">
             <div class="chat-header">
                 <div class="chat-header-info">
@@ -118,9 +109,7 @@
                 </div>
             </div>
 
-            <div class="messages-container" id="messages-container">
-                <!-- پیام‌ها -->
-            </div>
+            <div class="messages-container" id="messages-container"></div>
 
             <div class="typing-indicator" id="typing-indicator">⚜️ کسی در حال نوشتن است...</div>
 
@@ -134,7 +123,7 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات -->
+    <!-- مودال‌ها -->
     <div id="settings-modal" class="modal" style="display:none;">
         <div class="modal-content cyber-modal">
             <div class="modal-header">
@@ -159,7 +148,6 @@
         </div>
     </div>
 
-    <!-- مودال وضعیت -->
     <div id="status-modal" class="modal" style="display:none;">
         <div class="modal-content cyber-modal">
             <div class="modal-header">
@@ -175,7 +163,6 @@
         </div>
     </div>
 
-    <!-- مودال مدیریت -->
     <div id="admin-modal" class="modal" style="display:none;">
         <div class="modal-content cyber-modal admin-modal">
             <div class="modal-header">
