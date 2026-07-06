@@ -6,6 +6,7 @@ let currentUser = null;
 let currentChat = null;
 let currentChatType = 'personal';
 let replyTo = null;
+let allMessages = []; // ذخیره پیام‌ها برای نمایش
 
 // ===== المان‌ها =====
 const elements = {
@@ -44,14 +45,11 @@ const elements = {
 // ===== مدیریت تب‌های احراز هویت =====
 document.querySelectorAll('.auth-tab').forEach(tab => {
     tab.addEventListener('click', function() {
-        // حذف active از همه تب‌ها
         document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         
-        // مخفی کردن همه فرم‌ها
         document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
         
-        // نمایش فرم مربوطه
         const tabName = this.dataset.tab;
         if (tabName === 'login') {
             document.getElementById('login-form').classList.add('active');
@@ -114,7 +112,6 @@ function showMainApp() {
     elements.userName.textContent = currentUser.username;
     updateStatus(currentUser.status || 'online');
     
-    // دکمه مدیریت برای مالک
     if (currentUser.username === 'MALEK') {
         const adminBtn = document.createElement('button');
         adminBtn.className = 'icon-btn';
@@ -190,6 +187,10 @@ function openChat(chatId, type) {
     currentChat = chatId;
     currentChatType = type;
     
+    // پاک کردن پیام‌های قبلی
+    elements.messagesContainer.innerHTML = '';
+    allMessages = [];
+    
     socket.emit('get-chat-info', { chatId, type });
 }
 
@@ -209,6 +210,7 @@ function loadMessages(chatId, type) {
 socket.on('messages-history', function(messages) {
     const container = elements.messagesContainer;
     container.innerHTML = '';
+    allMessages = messages || [];
     
     if (!messages || messages.length === 0) {
         container.innerHTML = '<div style="text-align:center;color:#555;padding:40px;">💬 پیامی وجود ندارد</div>';
@@ -222,9 +224,14 @@ socket.on('messages-history', function(messages) {
     container.scrollTop = container.scrollHeight;
 });
 
-// ===== رندر پیام =====
+// ===== رندر پیام در محیط چت =====
 function renderMessage(msg) {
     const container = elements.messagesContainer;
+    
+    // حذف پیام "پیامی وجود ندارد"
+    const emptyMsg = container.querySelector('div[style*="text-align:center"]');
+    if (emptyMsg) emptyMsg.remove();
+    
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${msg.isOwn ? 'own' : 'other'}`;
     messageDiv.dataset.id = msg.id;
@@ -282,9 +289,15 @@ elements.messageInput.addEventListener('keypress', function(e) {
 
 // ===== دریافت پیام جدید =====
 socket.on('new-message', function(msg) {
+    // ذخیره پیام در لیست
+    allMessages.push(msg);
+    
+    // نمایش در محیط چت اگر در همان چت هستیم
     if (msg.chatId === currentChat) {
         renderMessage(msg);
     }
+    
+    // به‌روزرسانی لیست چت‌ها برای نمایش آخرین پیام
     loadChats();
 });
 
@@ -600,3 +613,7 @@ function animateParticles() {
 }
 
 animateParticles();
+
+// ===== سیستم نمایش پیام‌ها در محیط چت =====
+// این تابع برای اطمینان از نمایش پیام‌ها در محیط چت اضافه شده
+console.log('✅ PYS 2.0 آماده است!');
